@@ -1,7 +1,7 @@
 /**
  * This class represents a Lens and the corrosponding information such as the make, max aperture, and the focal length
  */
-package Model;
+package ca.assignment1.model;
 
 public class Lens {
     private String make;
