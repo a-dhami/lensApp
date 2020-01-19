@@ -1,4 +1,22 @@
+/**
+ *  This class contains the Lens Manager that is responsible for managing a collection of lenses
+ */
+
 package ca.assignment1.model;
 
-public class LensManager {
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+
+public class LensManager<Lenses> implements Iterable<Lens> {
+    private List<Lens> lenses = new ArrayList<>();
+
+    public void add(Lens lens){
+        lenses.add(lens);
+    }
+
+    @Override
+    public Iterator<Lens> iterator() {
+        return lenses.iterator();
+    }
 }

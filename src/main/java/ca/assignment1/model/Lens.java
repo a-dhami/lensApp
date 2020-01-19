@@ -1,5 +1,5 @@
 /**
- * This class represents a Lens and the corrosponding information such as the make, max aperture, and the focal length
+ * This class represents a Lens and the corresponding information such as the make, max aperture, and the focal length
  */
 package ca.assignment1.model;
 
@@ -39,4 +39,15 @@ public class Lens {
     public void setFocalLength(double focalLength) {
         this.focalLength = focalLength;
     }
+
+    @Override
+    public String toString() {
+        return "Lens{" +
+                "make='" + make + '\'' +
+                ", maxAperture=" + maxAperture +
+                ", focalLength=" + focalLength +
+                '}';
+    }
+
+
 }
