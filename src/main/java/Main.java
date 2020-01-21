@@ -1,24 +1,23 @@
 import ca.assignment1.model.Lens;
 import ca.assignment1.model.LensManager;
+import ca.assignment1.textui.CameraTextUI;
 
 
 public class Main {
     public static void main (String args[]) {
-      //System.out.println("Hello World, please work!");
 
-      //Lens lens = new Lens("Canon", 12,13);
-        //System.out.println("Lens's toString: " + lens);
+        LensManager manager = new LensManager();
+        //manager.add(new Lens("canon", 2.3, 4));
+        //manager.add(new Lens("Nikon", 2.2, 33));
 
-      LensManager manager = new LensManager();
-      manager.add(new Lens("Canon", 1.8, 50));
-      manager.add(new Lens("Tamron", 2.8, 90));
-      manager.add(new Lens("Sigma", 2.8, 200));
-      manager.add(new Lens("Nikon", 4, 200));
+        //Lens l = manager.get(1);
+        //System.out.println(manager.get(1).getFocalLength());
 
-      for (Object l : manager){
-          System.out.println("Lens is " + l);
+
+
+        CameraTextUI ui = new CameraTextUI(manager);
+        ui.show();
+
       }
 
     }
-}
-

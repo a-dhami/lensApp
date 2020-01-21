@@ -4,8 +4,11 @@
 
 package ca.assignment1.textui;
 
+import ca.assignment1.model.DOFCalculator;
+import ca.assignment1.model.Lens;
 import ca.assignment1.model.LensManager;
 
+import java.text.DecimalFormat;
 import java.util.Scanner;
 
 public class CameraTextUI {
@@ -15,6 +18,15 @@ public class CameraTextUI {
 
     public CameraTextUI(LensManager manager) {
         this.manager = manager;
+        manager.add(new Lens("Canon", 1.8, 50));
+        manager.add(new Lens("Tamron", 2.8, 90));
+        manager.add(new Lens("Sigma", 2.8, 200));
+        manager.add(new Lens("Nikon", 4, 200));
+    }
+
+    private String formatM(double distanceInM) {
+        DecimalFormat df = new DecimalFormat("0.00");
+        return df.format(distanceInM);
     }
 
     public void show() {
@@ -24,41 +36,41 @@ public class CameraTextUI {
 
             int counter = 0;
             for (Object l : manager) {
-                System.out.println(counter ".  " + l);
+                System.out.println("  " + counter + ".  " + l);
                 counter++;
             }
-            System.out.println("(-1 to exit)");
+            System.out.println("(-1 to exit)\n");
 
             Scanner in = new Scanner(System.in);
             int choice = in.nextInt();
 
             if (choice == -1) {
                 isDone = true;
+                break;
             }
-            else if (choice >= counter) {
+            else if (choice >= counter || choice < 0) {
                 System.out.println("Error: Invalid lens index.");
-                continue;
+                break;
             }
 
-            System.out.println("Aperture [the F number: ");
-            int aperture = in.nextDouble();
-            if (aperture < manager.get(counter).getMaxAperture()) {
+            Lens temp = manager.get(choice);
+            System.out.println("Aperture [the F number]: ");
+            double aperture = in.nextDouble();
+            if (aperture < temp.getMaxAperture()) {
                 System.out.println("ERROR: This aperture is not possible with this lens");
-                continue;
+                break;
             }
 
             System.out.println(" Distance to subject [m]: ");
-            int subjectDistance = in.nextDouble();
+            double subjectDistance = in.nextDouble();
 
+            double focalLength = temp.getFocalLength();
+            double[] calcValues = DOFCalculator.calcDOF(focalLength, aperture, subjectDistance, COC);
 
-
-
-
-
-
-
-
-            }
+            System.out.println("  In focus: " +  formatM(calcValues[0])
+                    + " to " + formatM(calcValues[1])
+                    + " [DoF = " + formatM(calcValues[2]) + "]" );
+            System.out.println("  Hyperfocal point: " + formatM(calcValues[3]));
         }
     }
 }

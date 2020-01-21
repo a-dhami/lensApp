@@ -6,10 +6,10 @@ package ca.assignment1.model;
 public class Lens {
     private String make;
     private double maxAperture;
-    private double focalLength;
+    private int focalLength;
 
     //auto generated constructor.
-    public Lens(String make, double maxAperture, double focalLength) {
+    public Lens(String make, double maxAperture, int focalLength) {
         this.make = make;
         this.maxAperture = maxAperture;
         this.focalLength = focalLength;
@@ -32,11 +32,11 @@ public class Lens {
         this.maxAperture = maxAperture;
     }
 
-    public double getFocalLength() {
+    public int getFocalLength() {
         return focalLength;
     }
 
-    public void setFocalLength(double focalLength) {
+    public void setFocalLength(int focalLength) {
         this.focalLength = focalLength;
     }
 
