@@ -42,11 +42,9 @@ public class Lens {
 
     @Override
     public String toString() {
-        return "Lens{" +
-                "make='" + make + '\'' +
-                ", maxAperture=" + maxAperture +
-                ", focalLength=" + focalLength +
-                '}';
+        return  make + ' '
+                + focalLength + "mm  F"
+                + maxAperture;
     }
 
 
