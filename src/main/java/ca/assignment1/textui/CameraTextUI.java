@@ -26,6 +26,7 @@ public class CameraTextUI {
 
     private String formatM(double distanceInM) {
         DecimalFormat df = new DecimalFormat("0.00");
+        distanceInM = distanceInM / 1000;
         return df.format(distanceInM);
     }
 
@@ -61,7 +62,7 @@ public class CameraTextUI {
                 break;
             }
 
-            System.out.println(" Distance to subject [m]: ");
+            System.out.println("Distance to subject [m]: ");
             double subjectDistance = in.nextDouble();
 
             double focalLength = temp.getFocalLength();

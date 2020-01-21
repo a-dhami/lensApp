@@ -10,14 +10,17 @@ public class DOFCalculator {
 
 
     public static double[] calcDOF(double focalLength, double aperture, double distance, double COC) {
+        distance = distance * 1000;
         double hyperFocal = calcHyperfocal(focalLength, aperture, COC);
         double nearFocal = ((hyperFocal * distance) / (hyperFocal + (distance - focalLength)));
+
 
         double farFocal;
         if(distance > hyperFocal) {
             farFocal = Double.POSITIVE_INFINITY;
         }
         else {
+
             farFocal = ((hyperFocal * distance) / (hyperFocal - (distance - focalLength)));
         }
 
