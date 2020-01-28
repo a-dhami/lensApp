@@ -69,9 +69,9 @@ public class CameraTextUI {
             double[] calcValues = DOFCalculator.calcDOF(focalLength, aperture, subjectDistance, COC);
 
             System.out.println("  In focus: " +  formatM(calcValues[0])
-                    + " to " + formatM(calcValues[1])
-                    + " [DoF = " + formatM(calcValues[2]) + "]" );
-            System.out.println("  Hyperfocal point: " + formatM(calcValues[3]));
+                    + "m to " + formatM(calcValues[1])
+                    + "m [DoF = " + formatM(calcValues[2]) + "m]" );
+            System.out.println("  Hyperfocal point: " + formatM(calcValues[3]) + "m");
         }
     }
 }
